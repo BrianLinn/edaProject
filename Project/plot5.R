@@ -10,15 +10,11 @@ dataMary <- subset(data, fips == "24510")
 dataSCC <- merge(dataMary, codes[, c("SCC","Short.Name")], by = "SCC", all.x = TRUE)
 remove(dataMary)
 
-#Extract only motor observations for combustion
-dataMotor <- subset(dataSCC, grepl("motor", dataSCC$Short.Name, 
-                                   ignore.case = TRUE))
-remove(dataSCC)
 
 #extract vehicle from motor observations
-dataVeh <- subset(dataMotor, grepl("vehicle", dataMotor$Short.Name, 
+dataVeh <- subset(dataSCC, grepl("veh", dataMotor$Short.Name, 
                                     ignore.case = TRUE))
-remove(dataMotor)
+remove(dataSCC)
 
 #group the data by year
 dataGrp <- group_by(dataVeh, year)
@@ -32,10 +28,9 @@ remove(dataGrp)
 png(file="plot5.png", width = 480, height = 480, units = "px")
 
 #Create initial plot of emissions over time
-plot(dataFinal, type = "l", col = "red", main = "Motor Vehicle Emissions Over Time",
+plot(dataFinal, type = "l", col = "red", 
+     main = "Motor Vehicle Emissions Over Time - Baltimore City, Maryland",
      xlab = "Years", ylab = "Motor Vehicle Emissions")
 
 #Turn off the png graphics device
 dev.off()
-
-
