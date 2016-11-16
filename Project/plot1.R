@@ -11,7 +11,7 @@ remove(dataGrp)
 #Plot 1 - Open png graphic device and set size
 png(file="plot1.png", width = 480, height = 480, units = "px")
 
-#Create initial plot of Global_active_power over time as hist
+#Create initial plot of emissions over time
 plot(dataFinal, type = "l", col = "red", main = "Emissions Over Time",
      xlab = "Years", ylab = "Total Emissions",  
      ylim=c(3000000,8000000))
