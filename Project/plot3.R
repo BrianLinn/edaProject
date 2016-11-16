@@ -9,7 +9,7 @@ source("dataLoad.R")
 ##subset to Baltimore data only
 dataMary <- subset(data, fips == "24510")
 
-#Plot 2 - Open png graphic device and set size
+#Plot 3 - Open png graphic device and set size
 png(file="plot3.png", width = 960, height = 480, units = "px")
 
 
